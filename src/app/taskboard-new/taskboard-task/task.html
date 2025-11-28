@@ -1,0 +1,22 @@
+<div class="card shadow-sm mb-3" style="width: 400px;">
+  <div class="card-body">
+    <h5 class="card-title"> {{ task.title }} </h5>
+    <p class="card-text text-muted mb-2">
+      <small>Deadline: {{ task.dueDate | getMonthDayString }}</small>
+    </p>
+    <div class="d-flex justify-content-between align-items-center">
+      <span class="badge" [class.bg-success]="task.isComplete" [class.bg-warning]="!task.isComplete">
+        {{ task.isComplete ? "Done" : "Pending" }}
+      </span>
+      <button class="btn btn-sm btn-outline-primary" (click)="handleToggleCompleteClick(task.id)">
+        Toggle
+      </button>
+      <button
+        class="btn btn-danger btn-sm delete-btn"
+        aria-label="Delete task"
+        (click)="handleDeleteTaskClick(task.id)">
+        <span aria-hidden="true"> &times; ️</span>
+      </button>
+    </div>
+  </div>
+</div>

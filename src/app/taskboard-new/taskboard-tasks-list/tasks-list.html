@@ -1,0 +1,29 @@
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <div class="d-flex justify-content-center align-items-center gap-2 mb-20">
+    <button
+      class="btn"
+      [ngClass]="displayTasksStatus.all ? 'btn-outline-secondary': 'btn-outline-primary'"
+      (click)="getAllTasks()"
+    >All tasks</button>
+    <button
+      class="btn"
+      [ngClass]="displayTasksStatus.incomplete ? 'btn-outline-secondary': 'btn-outline-primary'"
+      (click)="getIncompleteTasksOnly()">Incomplete</button>
+    <button
+      class="btn"
+      [ngClass]="displayTasksStatus.complete ? 'btn-outline-secondary': 'btn-outline-primary'"
+      (click)="getCompleteTasksOnly()">Complete</button>
+  </div>
+
+  @if (displayedTasksList.length === 0) {
+    No tasks to show
+  } @else {
+    @for (t of displayedTasksList; track t.id; let i = $index) {
+      <app-taskboard-task
+        (toggleCompleteClick)="toggleComplete(t.id)"
+        (deleteTaskClick)="deleteTask(t.id)"
+        [task]="t">
+      </app-taskboard-task>
+    }
+  }
+</div>
