@@ -1,38 +1,34 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Task} from '../taskboard-task/task';
 import {ITask} from '../../Interfaces/ITask';
 import {NgClass} from '@angular/common';
+import {RouterLink} from '@angular/router';
+import {TaskService} from '../../services/task-service';
 
 @Component({
   selector: 'app-taskboard-tasks-list',
-  imports: [Task, NgClass],
+  imports: [Task, NgClass, RouterLink],
   templateUrl: './tasks-list.html',
   styleUrl: './tasks-list.css',
 })
-export class TaskboardTasksList {
+export class TaskboardTasksList implements OnInit{
 
   displayTasksStatus: any = {
     all: true,
     complete: false,
     incomplete: false
   }
-  tasksList : ITask[] = [
-    {
-      id: 1,
-      title: "make angular app",
-      isComplete: false,
-      dueDate: "14-12-25"
-    },
-    {
-      id: 2,
-      title: "drink coffee",
-      isComplete: false,
-      dueDate: "01-12-25"
-    }
-  ];
-  displayedTasksList: ITask[] = [...this.tasksList];
+  tasksList : ITask[] = [];
+  displayedTasksList: ITask[] = [];
 
-  getCompleteTasksOnly(): void {
+  constructor(private taskService: TaskService) {}
+
+  ngOnInit() {
+    this.tasksList = this.taskService.getTasks();
+    this.displayedTasksList = this.taskService.getTasks();
+  }
+
+  displayCompleteTasksOnly(): void {
     this.displayedTasksList = this.tasksList.filter(t => t.isComplete);
     this.displayTasksStatus = {
       all: false,
@@ -41,7 +37,7 @@ export class TaskboardTasksList {
     }
   }
 
-  getIncompleteTasksOnly(): void {
+  displayIncompleteTasksOnly(): void {
     this.displayedTasksList = this.tasksList.filter(t => !t.isComplete);
     this.displayTasksStatus = {
       all: false,
@@ -50,7 +46,7 @@ export class TaskboardTasksList {
     }
   }
 
-  getAllTasks(): void {
+  displayAllTasks(): void {
     this.displayedTasksList = this.tasksList;
     this.displayTasksStatus = {
       all: true,
@@ -59,14 +55,14 @@ export class TaskboardTasksList {
     }
   }
 
-  toggleComplete(taskId: number) : void {
-    let taskToToggle = this.tasksList.find(t => t.id === taskId)!;
-    taskToToggle.isComplete = !taskToToggle?.isComplete;
+  toggleComplete(taskId: string) : void {
+    this.taskService.toggleComplete(taskId);
     this.refreshDisplayedTasksList();
   }
 
-  deleteTask(taskId: number) : void {
-    this.tasksList = this.tasksList.filter(t => t.id !== taskId);
+  deleteTask(taskId: string) : void {
+    this.taskService.deleteTask(taskId);
+    this.tasksList = this.taskService.getTasks();
     this.refreshDisplayedTasksList();
   }
 

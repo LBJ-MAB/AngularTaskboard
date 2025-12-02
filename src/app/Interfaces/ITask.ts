@@ -1,6 +1,8 @@
 export interface ITask {
-  id: number,
+  id: string,
   title: string;
   isComplete: boolean;
   dueDate: string;
+  description?: string;
+  priority?: number | null;
 }

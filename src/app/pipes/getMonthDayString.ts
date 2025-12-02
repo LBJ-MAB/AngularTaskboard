@@ -5,8 +5,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class GetMonthDayPipe implements PipeTransform {
   transform(date: string): string {
-    let day = date.substring(0, date.indexOf("-"));
-    let monthNum = parseInt(date.substring(date.indexOf("-") + 1, date.lastIndexOf("-")));
+    // date: YYYY-MM--DD
+    let day = date.substring(date.lastIndexOf("-")+1,);
+    let monthNum = parseInt(date.substring(date.indexOf("-")+1, date.lastIndexOf("-")));
+
     let monthStringArray : string[] = [
       "January", "February", "March",
       "April", "May", "June",

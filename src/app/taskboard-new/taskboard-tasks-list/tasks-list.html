@@ -1,18 +1,25 @@
 <div class="d-flex flex-column justify-content-center align-items-center">
-  <div class="d-flex justify-content-center align-items-center gap-2 mb-20">
+
+  <div class="text-center mt-4 mb-3">
+    <a routerLink="/create" class="create-task-link">
+      <i class="bi bi-arrow-left-circle"></i> Create New Task
+    </a>
+  </div>
+
+  <div class="d-flex justify-content-center align-items-center gap-2 mb-3">
     <button
       class="btn"
       [ngClass]="displayTasksStatus.all ? 'btn-outline-secondary': 'btn-outline-primary'"
-      (click)="getAllTasks()"
+      (click)="displayAllTasks()"
     >All tasks</button>
     <button
       class="btn"
       [ngClass]="displayTasksStatus.incomplete ? 'btn-outline-secondary': 'btn-outline-primary'"
-      (click)="getIncompleteTasksOnly()">Incomplete</button>
+      (click)="displayIncompleteTasksOnly()">Incomplete</button>
     <button
       class="btn"
       [ngClass]="displayTasksStatus.complete ? 'btn-outline-secondary': 'btn-outline-primary'"
-      (click)="getCompleteTasksOnly()">Complete</button>
+      (click)="displayCompleteTasksOnly()">Complete</button>
   </div>
 
   @if (displayedTasksList.length === 0) {

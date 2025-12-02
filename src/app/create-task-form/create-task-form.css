@@ -1,0 +1,139 @@
+.card {
+  border-radius: 10px;
+  border: none;
+}
+
+.card-header {
+  border-radius: 10px 10px 0 0 !important;
+  padding: 1.5rem;
+}
+
+.card-header h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.form-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.btn {
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #0d6efd;
+  border: none;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #0b5ed7;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(13, 110, 253, 0.3);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(108, 117, 125, 0.3);
+}
+
+.invalid-feedback {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.is-invalid {
+  border-color: #dc3545;
+}
+
+.is-invalid:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.alert {
+  border-radius: 8px;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+textarea.form-control {
+  resize: vertical;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+.text-muted {
+  font-size: 0.875rem;
+}
+
+/* Styled anchor link */
+.back-to-tasks-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #0d6efd;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  border: 2px solid transparent;
+}
+
+.back-to-tasks-link:hover {
+  color: #0b5ed7;
+  background-color: rgba(13, 110, 253, 0.1);
+  border-color: rgba(13, 110, 253, 0.2);
+  transform: translateX(-3px);
+}
+
+.back-to-tasks-link:focus {
+  outline: 2px solid #0d6efd;
+  outline-offset: 2px;
+}
+
+.back-to-tasks-link i {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.back-to-tasks-link:hover i {
+  transform: translateX(-3px);
+}

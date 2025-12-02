@@ -1,0 +1,35 @@
+.create-task-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #0d6efd;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  border: 2px solid transparent;
+}
+
+.create-task-link:hover {
+  color: #0b5ed7;
+  background-color: rgba(13, 110, 253, 0.1);
+  border-color: rgba(13, 110, 253, 0.2);
+  transform: translateY(-2px);
+}
+
+.create-task-link:focus {
+  outline: 2px solid #0d6efd;
+  outline-offset: 2px;
+}
+
+.create-task-link i {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.create-task-link:hover i {
+  transform: rotate(90deg) scale(1.1);
+}

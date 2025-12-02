@@ -1,1 +1,97 @@
-<p>create-task-form works!</p>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h3 class="mb-0">Create New Task</h3>
+        </div>
+        <div class="card-body">
+          <form>
+
+            <p>{{dueDate}}</p>
+
+            <div class="mb-3">
+              <label for="taskTitle" class="form-label">
+                Task Title <span class="text-danger">*</span>
+              </label>
+              <input
+                [(ngModel)]="taskTitle"
+                type="text"
+                class="form-control"
+                id="taskTitle"
+                name="title"
+                placeholder="Enter task title"
+              >
+            </div>
+
+            <div class="mb-3">
+              <label for="description" class="form-label">
+                Description
+              </label>
+              <textarea
+                [(ngModel)]="description"
+                class="form-control"
+                id="description"
+                name="description"
+              ></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="dueDate" class="form-label">
+                Due Date <span class="text-danger">*</span>
+              </label>
+              <input
+                [(ngModel)]="dueDate"
+                type="date"
+                class="form-control"
+                id="dueDate"
+                name="dueDate"
+              >
+            </div>
+
+            <div class="mb-3">
+              <label for="priority" class="form-label">
+                Priority
+              </label>
+              <select
+                (change)="handlePrioritySelected(priority.value)"
+                class="form-control"
+                id="priority"
+                name="priority"
+                #priority
+              >
+                <option value="0"> -- Select -- </option>
+                <option value="1"> High </option>
+                <option value="2"> Medium </option>
+                <option value="3"> Low </option>
+              </select>
+            </div>
+
+            <div class="d-flex gap-2 justify-content-end">
+              <button
+                (click)="handleCancelClick()"
+                type="button"
+                class="btn btn-secondary">
+                Cancel
+              </button>
+              <button
+                (click)="handleSubmitClick()"
+                type="submit"
+                class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Create Task
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <a routerLink="/tasks" class="back-to-tasks-link">
+        <i class="bi bi-arrow-left-circle"></i> Back to Tasks
+      </a>
+    </div>
+
+  </div>
+</div>
