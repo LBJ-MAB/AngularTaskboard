@@ -34,6 +34,9 @@ export class CreateTaskForm {
   }
 
   handleSubmitClick() : void {
+
+    console.log(this.priority);
+
     let task: ITask = {
       title: this.taskTitle,
       dueDate: this.dueDate,
