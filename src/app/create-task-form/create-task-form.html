@@ -6,21 +6,18 @@
           <h3 class="mb-0">Create New Task</h3>
         </div>
         <div class="card-body">
-          <form>
-
-            <p>{{dueDate}}</p>
-
+          <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
             <div class="mb-3">
               <label for="taskTitle" class="form-label">
                 Task Title <span class="text-danger">*</span>
               </label>
               <input
-                [(ngModel)]="taskTitle"
+                formControlName="title"
                 type="text"
                 class="form-control"
                 id="taskTitle"
                 name="title"
-                placeholder="Enter task title"
+                placeholder="Title"
               >
             </div>
 
@@ -29,7 +26,7 @@
                 Description
               </label>
               <textarea
-                [(ngModel)]="description"
+                formControlName="description"
                 class="form-control"
                 id="description"
                 name="description"
@@ -41,7 +38,7 @@
                 Due Date <span class="text-danger">*</span>
               </label>
               <input
-                [(ngModel)]="dueDate"
+                formControlName="dueDate"
                 type="date"
                 class="form-control"
                 id="dueDate"
@@ -54,11 +51,10 @@
                 Priority
               </label>
               <select
-                (change)="handlePrioritySelected(priority.value)"
+                formControlName="priority"
                 class="form-control"
                 id="priority"
                 name="priority"
-                #priority
               >
                 <option value="0"> -- Select -- </option>
                 <option value="1"> High </option>
@@ -75,7 +71,7 @@
                 Cancel
               </button>
               <button
-                (click)="handleSubmitClick()"
+                [disabled]="formGroup.invalid"
                 type="submit"
                 class="btn btn-primary">
                 <i class="bi bi-plus-circle"></i> Create Task
