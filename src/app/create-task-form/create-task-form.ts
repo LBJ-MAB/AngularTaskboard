@@ -33,8 +33,11 @@ export class CreateTaskForm implements OnInit {
 
   onSubmit() {
     if (this.formGroup.valid) {
-      console.log(this.formGroup);
-      this.taskService.addTask(this.formGroup.value);
+      let newTask = {
+        ...this.formGroup.value,
+        id: Guid.create()
+      }
+      this.taskService.addTask(newTask);
     }
   }
 
